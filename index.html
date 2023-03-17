@@ -22,14 +22,14 @@
     <!-- main css -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="/css/Personal.css" />
   </head>
   <body>
     <!--================Header Menu Area =================-->
     <header class="header_area">
-      <div class="main_menu">
+      <div class="main_menu nav-menu">
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container box_1620">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <a class="navbar-brand logo_h" href="index.html"
               ><img id="myImage" style="width: 180px" src="img/Hi.png" alt=""
             /></a>
@@ -53,14 +53,21 @@
             >
               <ul class="nav navbar-nav menu_nav ml-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home</a>
+                  <a class="nav-link home" onclick="scrollFunction1()">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="about-us.html">About</a>
+                  <a class="nav-link about section" onclick="scrollFunction2()"
+                    >About</a
+                  >
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href="portfolio.html">Projects</a>
+                  <a class="nav-link skills" onclick="scrollFunction3()">Skills</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link projects" onclick="scrollFunction4()"
+                    >Projects</a
+                  >
                 </li>
 
                 <li class="nav-item">
@@ -72,7 +79,7 @@
                   >
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contact</a>
+                  <a class="nav-link contact" onclick="scrollFunction5()">Contact</a>
                 </li>
               </ul>
             </div>
@@ -83,27 +90,27 @@
     <!--================Header Menu Area =================-->
 
     <!--================Home Banner Area =================-->
-    <section class="home_banner_area">
+    <section id="home" class="home_banner_area">
       <div class="container box_1620">
         <div class="banner_inner d-flex align-items-center">
-          <div class="banner_content">
+          <div id="about" class="banner_content">
             <div class="media">
               <div class="d-flex">
-                <img src="img/personal.jpg" alt="" />
+                <img src="img/personal.jpg" class="home-img" alt="" />
               </div>
               <div class="media-body">
                 <div class="personal_text">
-                  <h6>Hello Everybody, i am</h6>
-                  <h3>Ravindra</h3>
+                  <h6 id="contact">Hello Everybody, i am</h6>
+                  <h3 id="user-detail-name">Ravindra</h3>
                   <h4>Full Stack Web Developer</h4>
-                  <p>
+                  <p id="user-detail-intro">
                     Passion for developing scalable web applications and working
                     across the full stack. I am looking to join forces with Red
                     Technologies too continue to grow my skill set while
                     contributing to the positive outcome of making people
                     "richer, smarter, and happier"
                   </p>
-                  <ul class="list basic_info">
+                  <ul  class="list basic_info">
                     <li>
                       <a href="#"
                         ><i class="lnr lnr-calendar-full"></i> 12th February,
@@ -112,12 +119,12 @@
                     </li>
                     <li>
                       <a href="#"
-                        ><i class="lnr lnr-phone-handset"></i> +91 9799981426</a
+                        ><i class="lnr lnr-phone-handset"  id="contact-phone"></i> +91 9799981426</a
                       >
                     </li>
                     <li>
                       <a href="#"
-                        ><i class="lnr lnr-envelope"></i>
+                        ><i class="lnr lnr-envelope"  id="contact-email"></i>
                         ravindrakumartilotia4@gmail.com</a
                       >
                     </li>
@@ -129,21 +136,27 @@
                   </ul>
                   <ul class="list personal_social">
                     <li>
-                      <a
+                      <a target="_blank"
                         href="https://www.facebook.com/ravindra.kumartilotia.3/"
                         ><i class="fa fa-facebook"></i
                       ></a>
                     </li>
                     <li>
-                      <a
+                      <a target="_blank"
                         href="https://www.facebook.com/ravindra.kumartilotia.3/"
                         ><i class="fa fa-instagram"></i
                       ></a>
                     </li>
                     <li>
-                      <a
+                      <a target="_blank"
                         href="https://www.linkedin.com/in/ravindra-kumar-a148791a6/"
                         ><i class="fa fa-linkedin"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a id="contact-github" target="_blank"
+                        href="https://github.com/ravindra121q"
+                        ><i class="fa fa-github" ></i
                       ></a>
                     </li>
                   </ul>
@@ -164,11 +177,13 @@
             <div class="welcome_text">
               <h4>About Myself</h4>
               <p>
-                I enjoy collaborating with others and thrive in a team
-                environment where I can contribute my expertise and learn from
-                others.I am motivated by the opportunity to make a positive
-                impact on people's lives through technology and software
-                development.
+                I am a Full stack web developer doing military-style coding and
+                learning MERN Stack at Masai School. I have done various group
+                as well as individual projects in my coding journey. I enjoy
+                collaborating with others and thriving in a team environment
+                where I can contribute my expertise and learn from others. I am
+                motivated by the opportunity to make a positive impact on
+                people's lives through technology and software development.
               </p>
               <div class="row">
                 <div class="col-md-4">
@@ -368,9 +383,9 @@
                     <div class="d-flex">
                       <p>Jun 2016 to Apr 2020</p>
                     </div>
-                    <div class="media-body">
+                    <div  class="media-body">
                       <h4>Bachelor Of Technology</h4>
-                      <p>
+                      <p >
                         Mechanical Engineering <br />Shri JJT University,
                         Jhunjhunu
                       </p>
@@ -384,56 +399,215 @@
       </div>
     </section>
     <!--================End My Tabs Area =================-->
-
-    <!--================Home Gallery Area =================-->
-    <section class="home_gallery_area p_120">
+    <!-- Skills Area -->
+    <div id="skills"></div>
+    <br/>
+    <br/>
+    <br/>
+    <section   class="home_gallery_area p_120">
       <div class="container">
         <div class="main_title">
+          <h2>Techenical Skills</h2>
+        </div>
+      </div>
+      <div
+        class="toolsicon"
+        style="
+          display: grid;
+          
+          width: 80%;
+          margin: auto;
+          text-align: center;
+        "
+      >
+        <div>
+          <h4 style="font-weight: 400">Languages</h4>
+          <div>
+            <div>
+              <img
+                src="/img/Tools/js.png"
+                class="myclassimage"
+                alt="JavaScript"
+              />
+            </div>
+            <div>
+              <img
+                src="/img/Tools/python.png"
+                class="myclassimage"
+                alt="JavaScript"
+              />
+            </div>
+          </div>
+        </div>
+        <div style="display: block">
+          <h4 style="font-weight: 400">Front-End</h4>
+          <div class="myclassimage2"
+            style="
+              width: auto;
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+            "
+          >
+            <div>
+              <div>
+                <img
+                  src="/img/Tools/html-5.png"
+                  class="myclassimage"
+                  alt="JavaScript"
+                />
+              </div>
+              <div>
+                <img
+                  src="/img/Tools/physics.png"
+                  class="myclassimage"
+                  alt="JavaScript"
+                />
+              </div>
+            </div>
+            <div>
+              <div>
+                <img
+                  src="/img/Tools/css-3.png"
+                  class="myclassimage"
+                  alt="JavaScript"
+                />
+              </div>
+              <div>
+                <img
+                  src="/img/Tools/bootstrap.png"
+                  class="myclassimage"
+                  alt="JavaScript"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-weight: 400">Tools</h4>
+           <div
+            style="
+              width: auto;
+              display: grid;
+              gap: 10px;
+              grid-template-columns: repeat(2, 1fr);
+            "
+            class="myclassimage2"
+          >
+            <div>
+              <div>
+                <img
+                  src="/img/Tools/Papirus-Team-Papirus-Apps-Visual-studio-code.512.png"
+                  class="myclassimage"
+                  alt="JavaScript"
+                />
+              </div>
+              <div>
+                <img
+                  src="/img/Tools/github.png"
+                  class="myclassimage"
+                  alt="JavaScript"
+                />
+              </div>
+            </div>
+            <div>
+              <div>
+                <img
+                  src="/img/Tools/slack.png"
+                  class="myclassimage"
+                  alt="JavaScript"
+                />
+              </div>
+              <div>
+                <img
+                  src="/img/Tools/git.png"
+                  class="myclassimage"
+                  alt="JavaScript"
+                />
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+   
+    <!-- Skills Area-->
+
+    <!--================Home Gallery Area =================-->
+    <section id="projects" class="home_gallery_area p_120">
+      <div class="container">
+        <div  class="main_title">
           <h2>My latest Projects</h2>
-          <p>
-            Tech Stack used:- HTML, CSS, JavaScript, React, Chakra-ui, React
-            -Slick,Flickity
-          </p>
+         
         </div>
         <div class="isotope_fillter">
           <ul class="gallery_filter list">
-            <li class="active" data-filter="*"><a href="#">All</a></li>
+            <li class="active" data-filter="*"><a>All</a></li>
 
-            <li data-filter=".design"><a href="#">Individual</a></li>
-            <li data-filter=".desig"><a href="#">Group</a></li>
+            <li data-filter=".design"><a >Individual</a></li>
+            <li data-filter=".desig"><a >Group</a></li>
           </ul>
         </div>
       </div>
       <div class="container">
         <div class="gallery_f_inner row imageGallery1">
-          <div class="col-lg-4 col-md-4 col-sm-6 brand manipul design print">
+          <div class="col-lg-4 col-md-4 col-sm-6 manipul creative design print">
             <div class="h_gallery_item">
               <div class="g_img_item">
-                <img
-                  class="img-fluid"
-                  src="https://camo.githubusercontent.com/66c6d27845f785eed0271b420a84ef868ac9ef0197b73c45366aba6f686e5227/68747470733a2f2f692e6962622e636f2f733577357366522f736974652e706e67"
-                />
-                <a class="light" href="img/gallery/project-1.jpg"
-                  ><img src="img/gallery/icon.png" alt=""
+                <img class="img-fluid" src="img/Project/craftsvilla.png" alt="" />
+                <a class="light" href="img/Project/produut.png"
+                  ><img style="width: 100%;" src="img/Project/produut.png" alt=""
                 /></a>
               </div>
               <div class="g_item_text">
-                <h4>CraftsVilla_Clone</h4>
-                <p>Individual Project</p>
+                <h4 class="project-title">CraftsVilla_Clone</h4>
+                <p class="project-description">Craftsvilla is an online marketplace for ethnic Indian products, 
+including clothing, jewelry, home decor, and handicrafts. </p>
+                <p  class="project-tech-stack">Tech Stack: React, Chakra Ui, react-slick, JavaScript</p>
+                 <ul class="list personal_social" style="display: flex;justify-content: space-around;">
+                    
+                   <li >
+                     <a id="contact-github" class="project-github-link" target="_blank"
+                       href="https://github.com/ravindra121q/craftsvilla_clone"
+                       ><i class="fa fa-github" > Github</i
+                     ></a>
+                   </li>
+                    <li>
+                      <a target="_blank" class="project-deployed-link"
+                        href="https://craftsvilla-clone-m3qd-4kh5yinqz-ravindra121q.vercel.app/"
+                        ><i class="fa fa-linkedin"> Deployed</i
+                      ></a>
+                    </li>
+                  </ul>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-4 col-sm-6 brand desig creative">
+           <div class="col-lg-4 col-md-4 col-sm-6 manipul creative desig print">
             <div class="h_gallery_item">
               <div class="g_img_item">
-                <img class="img-fluid" src="/img/Project/rentmojo.png" alt="" />
-                <a class="light" href="img/gallery/project-2.jpg"
-                  ><img src="img/gallery/icon.png" alt=""
+                <img class="img-fluid" src="img/Project/rentmojo.png" alt="" />
+                <a class="light" href="img/Project/rent.png"
+                  ><img style="width: 100%;" src="img/Project/rent.png" alt="image"
                 /></a>
               </div>
               <div class="g_item_text">
-                <h4>RentMojo_Clone</h4>
-                <p>Group Project</p>
+                <h4 class="project-title">RentMojo_Clone</h4>
+                <p class="project-description">RentMojo is an Online website that provides rental solutions for 
+furniture, appliances, and other home essentials </p>
+                <p  class="project-tech-stack">Tech Stack: Json-Server, Html, CSS, JavaScript</p>
+                 <ul class="list personal_social" style="display: flex;justify-content: space-around;">
+                    
+                   <li >
+                     <a id="contact-github" class="project-github-link" target="_blank"
+                       href="https://github.com/hoshiyarjyani/deafening-weather-2115"
+                       ><i class="fa fa-github" > Github</i
+                     ></a>
+                   </li>
+                    <li>
+                      <a target="_blank" class="project-deployed-link"
+                        href="https://lively-kitsune-c2be93.netlify.app/"
+                        ><i class="fa fa-linkedin"> Deployed</i
+                      ></a>
+                    </li>
+                  </ul>
               </div>
             </div>
           </div>
@@ -441,13 +615,29 @@
             <div class="h_gallery_item">
               <div class="g_img_item">
                 <img class="img-fluid" src="img/Project/zee5.png" alt="" />
-                <a class="light" href="img/gallery/project-3.jpg"
+                <a class="light" href="img/Project/zee5.png"
                   ><img src="img/Project/zee5.png" alt=""
                 /></a>
               </div>
               <div class="g_item_text">
-                <h4>Zee 5_Clone</h4>
-                <p>Client Project</p>
+                <h4 class="project-title">Zee 5_Clone</h4>
+                <p class="project-description">ZEE5 is a popular Indian video streaming platform that offers a wide range of movies, TV shows, original series, live TV channels, and music videos in various languages.</p>
+                <p  class="project-tech-stack">Tech Stack: Html,CSS</p>
+                 <ul class="list personal_social" style="display: flex;justify-content: space-around;">
+                    
+                   <li >
+                     <a id="contact-github" class="project-github-link" target="_blank"
+                       href="https://github.com/ravindra121q/rich-noise-3360"
+                       ><i class="fa fa-github" > Github</i
+                     ></a>
+                   </li>
+                    <li>
+                      <a target="_blank" class="project-deployed-link"
+                        href="https://zee5-clone.vercel.app/"
+                        ><i class="fa fa-linkedin"> Deployed</i
+                      ></a>
+                    </li>
+                  </ul>
               </div>
             </div>
           </div>
