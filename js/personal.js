@@ -56,3 +56,7 @@ function scrollFunction5() {
     behavior: "smooth",
   });
 }
+function ResumeOpen() {
+  console.log("s");
+  window.open("/img/Project/Ravindra-Resume.pdf", "_blank");
+}

@@ -98,3 +98,21 @@ a {
     grid-template-rows: auto;
   }
 }
+
+.skills-card {
+  margin-bottom: 30px;
+}
+
+#resume-link-2:hover {
+
+  background-color: red;
+  text-emphasis-color: white;
+  color: white;
+  margin-bottom: 2%;
+}
+
+#resume-link-2 {
+  color: black;
+  text-decoration: dotted;
+  background-color: black;
+}
