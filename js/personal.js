@@ -15,9 +15,7 @@ function closeNav() {
 function scrollFunction1() {
   let e = document.getElementById("home");
   e.scrollIntoView({
-    block: "start",
     behavior: "smooth",
-    inline: "start",
   });
 }
 function scrollFunction2() {
