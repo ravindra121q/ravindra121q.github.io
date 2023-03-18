@@ -23,6 +23,10 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
     <link rel="stylesheet" href="/css/Personal.css" />
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
+/>
   </head>
   <body>
     <!--================Header Menu Area =================-->
@@ -92,7 +96,7 @@
     <!--================Home Banner Area =================-->
     <section id="home" class="home_banner_area">
       <div class="container box_1620">
-        <div id="about"  class="banner_inner d-flex align-items-center">
+        <div id="about" title="about" class="banner_inner d-flex align-items-center">
           <div class="banner_content">
             <div class="media">
               <div class="d-flex">
@@ -185,12 +189,12 @@
                 people's lives through technology and software development.
               </p><div style="width: 16.5%; margin: auto;border: 1px solid blue;border-radius: 8px;margin-bottom: 30px; " >
 
- <a id="resume-button-1" onclick="ResumeOpen()"
+ <a  onclick="ResumeOpen()"
                     class="nav-link resume"
                     href="/img/Project/Ravindra-Resume.pdf"
                     download
                     
-                    >RESUME</a
+                    ><span id="resume-button-1">RESUME</span></a
                   >
 </div>
               <div class="row">
@@ -554,9 +558,9 @@
         <br>
 
 <p><img align="center"  id="github-streak-stats" src="https://github-readme-streak-stats.herokuapp.com/?user=ravindra121q&theme=dark&background=0d1117&date_format=M%20j%5B%2C%20Y%5D" alt="ravindra121q" /></p>
+<p class="calendar react-activity-calendar" style="max-width: 60%;"></p>
 
-<p align="item-center"> <a href="https://twitter.com/" target="blank"><img id="github-stats-card" 
-  src="https://img.shields.io/twitter/follow/?logo=twitter&style=for-the-badge" alt="" /></a> </p>
+
 </div>
   <!--================Home Gallery Area =================-->
     <section id="projects" class="home_gallery_area p_120">
@@ -576,7 +580,7 @@
       </div>
       <div class="container">
         <div class="gallery_f_inner row imageGallery1">
-          <div class="col-lg-4 col-md-4 col-sm-6 manipul creative design print project-card">
+          <div class="col-lg-4 col-md-4 col-sm-6 manipul creative design print ">
             <div class="h_gallery_item">
               <div class="g_img_item project-card">
                 <img class="img-fluid" src="img/Project/craftsvilla.png" alt="" />
@@ -588,7 +592,7 @@
                 <h4 class="project-title">CraftsVilla_Clone</h4>
                 <p class="project-description">Craftsvilla is an online marketplace for ethnic Indian products, 
 including clothing, jewelry, home decor, and handicrafts. </p>
-                <p  class="project-tech-stack">Tech Stack: React, Chakra Ui, react-slick, JavaScript</p>
+                <p  class="project-tech-stack">Tech stack used: React, Chakra Ui, react-slick, JavaScript</p>
                  <ul class="list personal_social" style="display: flex;justify-content: space-around;">
                     
                    <li >
@@ -607,7 +611,7 @@ including clothing, jewelry, home decor, and handicrafts. </p>
               </div>
             </div>
           </div>
-           <div class="col-lg-4 col-md-4 col-sm-6 project-card manipul creative desig print">
+           <div class="col-lg-4 col-md-4 col-sm-6  manipul creative desig print">
             <div class="h_gallery_item">
               <div class="g_img_item project-card">
                 <img class="img-fluid" src="img/Project/rentmojo.png" alt="" />
@@ -615,11 +619,11 @@ including clothing, jewelry, home decor, and handicrafts. </p>
                   ><img style="width: 100%;" src="img/Project/rent.png" alt="image"
                 /></a>
               </div>
-              <div class="g_item_text project-card">
+              <div class="g_item_text ">
                 <h4 class="project-title">RentMojo_Clone</h4>
                 <p class="project-description">RentMojo is an Online website that provides rental solutions for 
 furniture, appliances, and other home essentials </p>
-                <p  class="project-tech-stack">Tech Stack: Json-Server, Html, CSS, JavaScript</p>
+                <p  class="project-tech-stack">Tech stack used: Json-Server, Html, CSS, JavaScript</p>
                  <ul class="list personal_social" style="display: flex;justify-content: space-around;">
                     
                    <li >
@@ -646,10 +650,10 @@ furniture, appliances, and other home essentials </p>
                   ><img src="img/Project/zee5.png" alt=""
                 /></a>
               </div>
-              <div class="g_item_text project-card">
+              <div class="g_item_text ">
                 <h4 class="project-title">Zee 5_Clone</h4>
                 <p class="project-description">ZEE5 is a popular Indian video streaming platform that offers a wide range of movies, TV shows, original series, live TV channels, and music videos in various languages.</p>
-                <p  class="project-tech-stack">Tech Stack: Html,CSS</p>
+                <p  class="project-tech-stack">Tech stack used: Html,CSS</p>
                  <ul class="list personal_social" style="display: flex;justify-content: space-around;">
                     
                    <li >
@@ -727,6 +731,9 @@ furniture, appliances, and other home essentials </p>
     <script <script src="js/popper.js"></script>
     <script src="js/personal.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script
+  src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js">
+</script>
     <script src="js/stellar.js"></script>
     <script src="vendors/lightbox/simpleLightbox.min.js"></script>
     <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
@@ -739,5 +746,19 @@ furniture, appliances, and other home essentials </p>
     <script src="vendors/counter-up/jquery.counterup.min.js"></script>
     <script src="js/mail-script.js"></script>
     <script src="js/theme.js"></script>
+
+<script>
+    GitHubCalendar(".calendar", "ravindra121q");
+
+    // or enable responsive functionality:
+    GitHubCalendar(".calendar", "ravindra121q", { responsive: true });
+
+    // Use a proxy
+    GitHubCalendar(".calendar", "ravindra121q", {
+       proxy (username) {
+         return fetch(`https://your-proxy.com/github?user=${ravindra121q}`)
+       }
+    }).then(r => r.text())
+</script>
   </body>
 </html>
