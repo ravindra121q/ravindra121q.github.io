@@ -103,16 +103,20 @@ a {
   margin-bottom: 30px;
 }
 
-#resume-link-2:hover {
-
-  background-color: red;
-  text-emphasis-color: white;
-  color: white;
+#mybtn:hover {
+color: white;
+  
   margin-bottom: 2%;
+  border-radius: 9px;background: rgb(61, 106, 255);
+    box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
 }
 
-#resume-link-2 {
-  color: black;
-  text-decoration: dotted;
-  background-color: black;
+#mybtn{
+color: black;
+border: 1px solid blue;
+text-align: center;
+border-radius: 7px; width: 100px;
 }
