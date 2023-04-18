@@ -54,18 +54,7 @@ function scrollFunction5() {
     behavior: "smooth",
   });
 }
-
 function ResumeOpen() {
   console.log("s");
   window.open("/img/Project/Ravindra-Resume.pdf", "_blank");
 }
-
-// Define ravindra121q
-const ravindra121q = "ravindra121q";
-
-// Run GitHubCalendar with the defined variable
-GitHubCalendar(".calendar", ravindra121q, {
-  proxy: function (username) {
-    return fetch(`https://your-proxy.com/github?user=${ravindra121q}`);
-  },
-}).then((r) => r.text());
