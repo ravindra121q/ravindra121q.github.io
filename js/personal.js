@@ -12,8 +12,7 @@ function closeNav() {
   document.getElementById("myNav").style.display = "none";
 }
 function scrollFunction1(elementId) {
-  const element = document.getElementById(elementId);
-  element.scrollIntoView({
+  document.querySelector(`#${elementId}`).scrollIntoView({
     behavior: "smooth",
     block: "start",
     inline: "nearest",
