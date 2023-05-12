@@ -11,38 +11,12 @@ function openNav() {
 function closeNav() {
   document.getElementById("myNav").style.display = "none";
 }
-function scrollFunction1() {
-  let e = document.getElementById("home");
-  e.scrollIntoView({
+function scrollFunction1(elementId) {
+  const element = document.getElementById(elementId);
+  element.scrollIntoView({
     behavior: "smooth",
-  });
-}
-
-function scrollFunction2() {
-  let e = document.getElementById("about");
-  e.scrollIntoView({
-    behavior: "smooth",
-  });
-}
-
-function scrollFunction3() {
-  let e = document.getElementById("skills");
-  e.scrollIntoView({
-    behavior: "smooth",
-  });
-}
-
-function scrollFunction4() {
-  let e = document.getElementById("projects");
-  e.scrollIntoView({
-    behavior: "smooth",
-  });
-}
-
-function scrollFunction5() {
-  let e = document.getElementById("contact");
-  e.scrollIntoView({
-    behavior: "smooth",
+    block: "start",
+    inline: "nearest",
   });
 }
 function ResumeOpen() {
