@@ -19,6 +19,8 @@ function scrollFunction1(elementId) {
   });
 }
 function ResumeOpen() {
-  console.log("s");
-  window.open("/img/Project/Ravindra-Resume.pdf", "_blank");
+  window.open(
+    "https://drive.google.com/file/d/1mWq29M7rumtl7yXKaUU0gcJXvqoCyu-e/view",
+    "_blank"
+  );
 }
