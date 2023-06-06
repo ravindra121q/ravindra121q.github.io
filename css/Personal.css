@@ -103,7 +103,7 @@ a {
   margin-bottom: 30px;
 }
 
-#resume-link-1:hover {
+#resume-button-1:hover {
 color: white;cursor: pointer;
   
   margin-bottom: 2%;
@@ -113,7 +113,7 @@ color: white;cursor: pointer;
     -moz-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
 }
-#resume-link-1{
+#resume-button-1{
   color: black;cursor: pointer;
   margin-bottom: 2%;
   border-radius: 9px;background-color: red;border: none;
