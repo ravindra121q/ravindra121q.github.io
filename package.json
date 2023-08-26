@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "github-calendar": "^2.3.2",
     "prettier": "^3.0.1"
   }
 }
