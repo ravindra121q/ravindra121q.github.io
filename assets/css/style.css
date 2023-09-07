@@ -871,7 +871,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 }
 
 .col-sm-41{
-    display: grid;grid-template-columns: repeat(3,1fr);gap: 10px;
+    display: grid;grid-template-columns: repeat(2,1fr);gap: 10px;
 }
 
 .col-sm-41 .item{
