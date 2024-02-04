@@ -17,7 +17,8 @@ This portfolio showcases my skills, projects, and experiences in web development
 
 🌐 [Visit Portfolio](https://ravindra121q.github.io/)
 
-![Portfolio Screenshot](screenshot.png)
+![Portfolio Screenshot](https://i.ibb.co/TW6Jkqm/image.png)
+
 
 ## Technologies Used
 
