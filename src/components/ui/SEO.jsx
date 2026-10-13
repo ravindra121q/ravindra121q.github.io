@@ -204,6 +204,7 @@ export default function SEO({
       <meta name="coverage" content="Worldwide" />
       <meta name="distribution" content="Global" />
       <meta name="rating" content="General" />
+      <meta name="google-site-verification" content="_FyuQpLuGtvLBtr5EN2hk_l7R9h0RV17tu-7hVrGhgY" />
       <link rel="canonical" href={resolvedCanonical} />
 
       {/* Open Graph / Facebook / LinkedIn */}
