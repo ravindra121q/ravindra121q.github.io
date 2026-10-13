@@ -4,8 +4,31 @@ import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import Sitemap from 'vite-plugin-sitemap';
 
+function githubPagesEntryPlugin() {
+  return {
+    name: 'github-pages-entry',
+    transformIndexHtml: {
+      order: 'pre',
+      handler(html) {
+        if (!html.includes('/src/main.jsx')) {
+          return html
+            .replace(/\s*<script type="module" crossorigin src="\/assets\/[^"]+"><\/script>/g, '')
+            .replace(/\s*<link rel="modulepreload" crossorigin href="\/assets\/[^"]+">/g, '')
+            .replace(/\s*<link rel="stylesheet" crossorigin href="\/assets\/[^"]+">/g, '')
+            .replace(/\s*<link rel="sitemap"[^>]*>/g, '')
+            .replace(/\s*<link rel="manifest"[^>]*><script id="vite-plugin-pwa:inline-sw">.*?<\/script>/g, '')
+            .replace('<div id="root"></div>', '<div id="root"></div>\n    <script type="module" src="/src/main.jsx"></script>');
+        }
+        return html;
+      }
+    }
+  };
+}
+
 export default defineConfig({
+  base: '/',
   plugins: [
+    githubPagesEntryPlugin(),
     react(),
     tailwindcss(),
     Sitemap({
@@ -21,28 +44,15 @@ export default defineConfig({
       ],
       changefreq: 'weekly',
       priority: 0.8,
-      generateRobotsTxt: true,
-      robots: [
-        {
-          userAgent: '*',
-          allow: '/'
-        },
-        {
-          userAgent: 'Googlebot',
-          allow: '/'
-        },
-        {
-          userAgent: 'Bingbot',
-          allow: '/'
-        }
-      ]
+      generateRobotsTxt: false
     }),
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'inline',
-      includeAssets: ['favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
+      includeAssets: ['robots.txt', 'profile.jpg'],
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        globIgnores: ['**/404.html'],
         maximumFileSizeToCacheInBytes: 5000000,
         navigateFallbackDenylist: [/^\/sitemap\.xml$/, /^\/robots\.txt$/, /^\/ai-catalog\.json$/, /^\/llms\.txt$/]
       },
