@@ -89,12 +89,18 @@ jobs:
         with:
           path: ./dist
 
+      - name: Upload build artifact for branch deploy
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-bundle
+          path: ./dist
+          retention-days: 1
+
   deploy-actions:
     name: Deploy to GitHub Pages (Actions)
     needs: quality-and-build
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    continue-on-error: true
     permissions:
       pages: write
       id-token: write
@@ -104,6 +110,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
+        continue-on-error: true
         uses: actions/deploy-pages@v4
 
   deploy-branch:
@@ -111,23 +118,14 @@ jobs:
     needs: quality-and-build
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    continue-on-error: true
     permissions:
       contents: write
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Download built dist bundle
+        uses: actions/download-artifact@v4
         with:
-          node-version: 22
-          cache: 'npm'
-
-      - name: Install dependencies & Build
-        run: |
-          npm ci
-          npm run build
+          name: dist-bundle
+          path: ./dist
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
