@@ -169,30 +169,31 @@ export const PROJECTS = [
     image: '/images/website-img-4.jpg'
   },
   {
-    id: 'brifly-news',
-    slug: 'brifly-news-platform',
-    title: 'Brifly — AI-Powered News Engine',
+    id: 'radarfeed-platform',
+    slug: 'radarfeed-ai-news-radar',
+    title: 'RadarFeed — AI News Radar & Real-Time Intelligence Engine',
     category: 'AI Platform & Real-Time Engine',
-    tagline: 'Production-grade AI platform aggregating and summarizing trending news in real-time.',
-    summary: 'An AI-powered news aggregation platform utilizing React 18, Vite, WebSockets, and AI models to rank, summarize, and deliver breaking news updates in real time.',
-    featured: false,
-    techStack: ['React 18', 'Vite', 'Node.js', 'MongoDB', 'Socket.IO', 'AI Integration'],
+    tagline: 'AI-powered news radar tracking trending stories, live cricket scores, and executive summaries.',
+    summary: 'A real-time AI news intelligence and sports platform built with React, Vite, Tailwind CSS, and WebSockets. Aggregates multi-source breaking news, AI executive summaries, live cricket scores, and trending topic momentum.',
+    featured: true,
+    techStack: ['React 18', 'Vite', 'Tailwind CSS', 'Node.js', 'Socket.IO', 'AI Integration', 'REST APIs'],
     metrics: [
-      { label: 'Framework', value: 'React 18 & Vite SPA' },
-      { label: 'Realtime Engine', value: 'Socket.IO' },
-      { label: 'AI Summaries', value: 'Automated' }
+      { label: 'Feed Latency', value: '< 120ms' },
+      { label: 'Realtime Engine', value: 'WebSockets' },
+      { label: 'AI Summaries', value: 'Instant' }
     ],
     highlights: [
-      'Integrated AI API pipelines to summarize incoming news articles automatically.',
-      'Implemented WebSockets for instant live topic feed updates.',
-      'Engineered an advanced admin moderation panel.'
+      'Engineered real-time news radar feed aggregating breaking stories, source context, and AI-ranked topic momentum.',
+      'Integrated live cricket scores and ball-by-ball updates alongside global trending news streams.',
+      'Implemented instant bookmark queue, topic search filtering, and AI interactive query capabilities.'
     ],
     architecture: {
-      problem: 'News readers are overwhelmed by verbose articles and duplicate coverage.',
-      solution: 'Built an AI aggregator summarizing articles into quick bite-sized updates delivered over WebSockets.',
-      challenges: 'Handling high-volume incoming RSS feeds and deduplicating news items dynamically.'
+      problem: 'News readers are overwhelmed by verbose articles, duplicated coverage, and fragmented sports trackers.',
+      solution: 'Built an AI-driven single-pane feed aggregating multi-source journalism, live cricket events, and automatic topic clustering.',
+      challenges: 'Managing high-frequency live stream state updates without causing UI re-render thrashing.'
     },
-    liveUrl: null,
+    liveUrl: 'https://radarfeed.vercel.app/',
+    allowIframe: false,
     githubUrl: null,
     image: '/images/website-img-7.jpg'
   },

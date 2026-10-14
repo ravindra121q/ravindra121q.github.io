@@ -39,6 +39,7 @@ Ravindra Kumar is a top 1% Frontend Engineer and Website Developer specializing 
 - **Build Corp Visual CMS**: Architectural showcase with live CMS previews, dynamic project portfolios, and responsive layout grids.
 - **CricInnings Live Cricket & Sports Portal**: High-traffic live score platform with ball-by-ball updates, match schedules, and real-time commentary (`https://cricinnings.in/`).
 - **MarketPlace Multi-Vendor E-Commerce**: Ultra-premium luxury e-commerce web application with instant global checkout and dynamic cart synchronization (`https://marketplace-two-ashen.vercel.app/`).
+- **RadarFeed AI News Radar**: Real-time AI news intelligence and sports platform tracking trending stories, live cricket scores, and executive summaries (`https://radarfeed.vercel.app/`).
 - **Flipbook Viewer Pro**: Interactive canvas flipbook engine featuring smooth page-turn physics, PDF rendering, and presentation controls.
 - **Raj Ratan Luxury Fashion App**: High-conversion editorial luxury fashion storefront with sub-second catalog transitions.
 - **General Maintenance Fit-Out Platform**: Real-time project cost estimator and commercial maintenance portfolio.
@@ -48,5 +49,5 @@ Ravindra Kumar is a top 1% Frontend Engineer and Website Developer specializing 
 ## Hiring & Contracting Details
 - **Availability**: Available immediately for high-impact website development contracts, freelance consulting, and full-time frontend roles.
 - **Direct Contact**: [Contact Page](https://ravindra-dev07.vercel.app/contact)
-- **LinkedIn**: https://linkedin.com/in/ravindra-kumar-masai
+- **LinkedIn**: https://linkedin.com/in/ravindra-react-developer
 - **GitHub**: https://github.com/ravindra121q

@@ -1,26 +1,53 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import Sitemap from 'vite-plugin-sitemap';
 
-function githubPagesEntryPlugin() {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const SPA_ROUTES = [
+  'projects',
+  'services',
+  'about',
+  'contact',
+  'help',
+  'privacy',
+  'terms'
+];
+
+function githubPagesSpaPlugin() {
   return {
-    name: 'github-pages-entry',
-    transformIndexHtml: {
-      order: 'pre',
-      handler(html) {
-        if (!html.includes('/src/main.jsx')) {
-          return html
-            .replace(/\s*<script type="module" crossorigin src="\/assets\/[^"]+"><\/script>/g, '')
-            .replace(/\s*<link rel="modulepreload" crossorigin href="\/assets\/[^"]+">/g, '')
-            .replace(/\s*<link rel="stylesheet" crossorigin href="\/assets\/[^"]+">/g, '')
-            .replace(/\s*<link rel="sitemap"[^>]*>/g, '')
-            .replace(/\s*<link rel="manifest"[^>]*><script id="vite-plugin-pwa:inline-sw">.*?<\/script>/g, '')
-            .replace('<div id="root"></div>', '<div id="root"></div>\n    <script type="module" src="/src/main.jsx"></script>');
-        }
-        return html;
+    name: 'github-pages-spa',
+    closeBundle() {
+      const distDir = path.resolve(__dirname, 'dist');
+      const indexPath = path.join(distDir, 'index.html');
+      if (!fs.existsSync(indexPath)) return;
+
+      // 1. Ensure .nojekyll exists in dist
+      fs.writeFileSync(path.join(distDir, '.nojekyll'), '');
+
+      // 2. Ensure 404.html exists in dist for GitHub Pages SPA client-side routing
+      fs.copyFileSync(indexPath, path.join(distDir, '404.html'));
+
+      // 3. Pre-generate sub-routes with index.html so direct URLs return 200 OK
+      for (const route of SPA_ROUTES) {
+        const routeDir = path.join(distDir, route);
+        fs.mkdirSync(routeDir, { recursive: true });
+        fs.copyFileSync(indexPath, path.join(routeDir, 'index.html'));
       }
+
+      // 4. Ensure complete crawler-optimized robots.txt from public is preserved
+      const publicRobots = path.resolve(__dirname, 'public/robots.txt');
+      if (fs.existsSync(publicRobots)) {
+        fs.copyFileSync(publicRobots, path.join(distDir, 'robots.txt'));
+      }
+
+      console.log('✓ GitHub Pages SPA bundle prepared (.nojekyll, 404.html, multi-route index fallbacks)');
     }
   };
 }
@@ -28,20 +55,11 @@ function githubPagesEntryPlugin() {
 export default defineConfig({
   base: '/',
   plugins: [
-    githubPagesEntryPlugin(),
     react(),
     tailwindcss(),
     Sitemap({
-      hostname: 'https://ravindra-dev07.vercel.app',
-      dynamicRoutes: [
-        '/projects',
-        '/services',
-        '/about',
-        '/contact',
-        '/help',
-        '/privacy',
-        '/terms'
-      ],
+      hostname: 'https://ravindra121q.github.io',
+      dynamicRoutes: SPA_ROUTES.map(route => `/${route}`),
       changefreq: 'weekly',
       priority: 0.8,
       generateRobotsTxt: false
@@ -49,10 +67,9 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'inline',
-      includeAssets: ['robots.txt', 'profile.jpg'],
+      includeAssets: ['favicon.svg', 'robots.txt', 'profile.jpg'],
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
-        globIgnores: ['**/404.html'],
         maximumFileSizeToCacheInBytes: 5000000,
         navigateFallbackDenylist: [/^\/sitemap\.xml$/, /^\/robots\.txt$/, /^\/ai-catalog\.json$/, /^\/llms\.txt$/]
       },
@@ -71,7 +88,8 @@ export default defineConfig({
           }
         ]
       }
-    })
+    }),
+    githubPagesSpaPlugin()
   ],
   build: {
     rollupOptions: {

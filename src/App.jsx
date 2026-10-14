@@ -94,7 +94,7 @@ function App() {
             <ScrollToTop />
             <AnimatedRoutes />
           </Router>
-          {typeof window !== 'undefined' && window.location.hostname.includes('vercel.app') && <Analytics />}
+          <Analytics />
         </LazyMotion>
       </ThemeProvider>
     </HelmetProvider>
