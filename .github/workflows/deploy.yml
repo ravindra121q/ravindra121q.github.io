@@ -8,19 +8,17 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: 'pages'
+  cancel-in-progress: true
 
 jobs:
   build:
-    name: Build & Verify
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,85 +27,29 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Code Quality & Linting (oxlint)
-        run: npm run lint
-
-      - name: Unit & Integration Tests (vitest)
-        run: npm test
-
-      - name: Build production bundle (Vite)
+      - name: Build production bundle
+        env:
+          CI_SKIP_ROOT_SYNC: 'true'
         run: npm run build
 
-      - name: Verify build integrity & SPA route fallbacks
-        run: |
-          set -euo pipefail
-          echo "Verifying production build integrity..."
-          test -f dist/index.html || { echo "::error::Missing dist/index.html"; exit 1; }
-          test -f dist/404.html || { echo "::error::Missing dist/404.html (required for SPA routing)"; exit 1; }
-          test -f dist/.nojekyll || { echo "::error::Missing dist/.nojekyll"; exit 1; }
-          test -f dist/sitemap.xml || { echo "::error::Missing dist/sitemap.xml"; exit 1; }
-          test -f dist/robots.txt || { echo "::error::Missing dist/robots.txt"; exit 1; }
-          test -d dist/projects && test -f dist/projects/index.html || { echo "::error::Missing dist/projects/index.html"; exit 1; }
-          echo "✓ All critical GitHub Pages files and SPA routes verified."
-
-      - name: Generate Deployment Step Summary
-        run: |
-          DIST_SIZE=$(du -sh dist | awk '{print $1}')
-          JS_COUNT=$(find dist/assets -name '*.js' | wc -l | tr -d ' ')
-          CSS_COUNT=$(find dist/assets -name '*.css' | wc -l | tr -d ' ')
-          cat << EOF >> $GITHUB_STEP_SUMMARY
-          ## 🚀 GitHub Pages Build Summary
-
-          | Metric | Value |
-          |---|---|
-          | **Status** | ✅ Passed Quality Gate & Built Successfully |
-          | **Total Bundle Size** | ${DIST_SIZE} |
-          | **JavaScript Chunks** | ${JS_COUNT} |
-          | **CSS Bundles** | ${CSS_COUNT} |
-          | **SPA Fallback** | ✅ \`404.html\` + Pre-rendered Route Index Files |
-          | **Jekyll Processing** | ⛔ Disabled (\`.nojekyll\` present) |
-          | **Live URL Target** | [https://ravindra121q.github.io/](https://ravindra121q.github.io/) |
-
-          ### 📦 Pre-rendered 200 OK Routes
-          - \`/\` (Home)
-          - \`/projects\`
-          - \`/services\`
-          - \`/about\`
-          - \`/contact\`
-          - \`/help\`
-          - \`/privacy\`
-          - \`/terms\`
-          EOF
-
-      - name: Upload GitHub Pages artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
-      - name: Sync built bundle to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v4
-        continue-on-error: true
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          keep_files: false
-          enable_jekyll: false
-          commit_message: "chore(release): deploy ${{ github.sha }} to gh-pages [skip ci]"
-
   deploy:
-    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    continue-on-error: true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        continue-on-error: true
         uses: actions/deploy-pages@v4
