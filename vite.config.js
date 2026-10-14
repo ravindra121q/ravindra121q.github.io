@@ -48,7 +48,13 @@ function githubPagesSpaPlugin() {
         fs.copyFileSync(publicRobots, path.join(distDir, 'robots.txt'));
       }
 
-      console.log('✓ GitHub Pages SPA bundle prepared (.nojekyll, 404.html, multi-route index fallbacks)');
+      // 5. Ensure complete crawler-optimized sitemap.xml from public is preserved
+      const publicSitemap = path.resolve(__dirname, 'public/sitemap.xml');
+      if (fs.existsSync(publicSitemap)) {
+        fs.copyFileSync(publicSitemap, path.join(distDir, 'sitemap.xml'));
+      }
+
+      console.log('✓ GitHub Pages SPA bundle prepared (.nojekyll, 404.html, sitemap.xml, robots.txt, multi-route index fallbacks)');
     }
   };
 }
@@ -73,7 +79,7 @@ export default defineConfig(({ mode }) => {
       VitePWA({
         registerType: 'autoUpdate',
         injectRegister: 'inline',
-        includeAssets: ['favicon.svg', 'robots.txt', 'profile.jpg'],
+        includeAssets: ['favicon.svg', 'robots.txt', 'profile.jpg', 'sitemap.xml'],
         workbox: {
           globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
           maximumFileSizeToCacheInBytes: 5000000,

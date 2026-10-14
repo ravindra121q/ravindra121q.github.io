@@ -10,7 +10,7 @@ export default function Terms() {
       <SEO 
         title={`Terms of Service | ${PROFILE.name}`}
         description="Terms of service for using this portfolio web application."
-        canonicalUrl="https://ravindra-dev07.vercel.app/terms"
+        canonicalUrl="https://ravindra121q.github.io/terms"
       />
 
       <Container size="xl" className="py-16">

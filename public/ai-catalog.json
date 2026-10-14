@@ -2,35 +2,35 @@
   "$schema": "https://agenticresourcediscovery.org/schema/v1/ai-catalog.json",
   "name": "Ravindra Kumar — Website Developer & Senior Frontend Engineer Portfolio",
   "description": "AI Agent catalog for Ravindra Kumar - Senior Frontend Engineer, Website Developer & React Architect specializing in high-performance web development",
-  "url": "https://ravindra-dev07.vercel.app",
+  "url": "https://ravindra121q.github.io",
   "provider": {
     "name": "Ravindra Kumar",
     "email": "ravindra.dev07@gmail.com",
-    "url": "https://ravindra-dev07.vercel.app"
+    "url": "https://ravindra121q.github.io"
   },
   "resources": [
     {
       "name": "Website Development & Engineering Services",
       "type": "service",
-      "url": "https://ravindra-dev07.vercel.app/services",
+      "url": "https://ravindra121q.github.io/services",
       "description": "Comprehensive website development, React UI engineering, Core Web Vitals optimization, and responsive design systems"
     },
     {
       "name": "Engineering Projects & Case Studies",
       "type": "dataset",
-      "url": "https://ravindra-dev07.vercel.app/projects",
+      "url": "https://ravindra121q.github.io/projects",
       "description": "Production case studies of React 18 web applications and custom websites"
     },
     {
       "name": "Technical & Recruiter FAQs",
       "type": "documentation",
-      "url": "https://ravindra-dev07.vercel.app/help",
+      "url": "https://ravindra121q.github.io/help",
       "description": "Answers regarding web development tech stack, hiring availability, architecture standards, and performance optimization"
     },
     {
       "name": "Contact & Hiring Inquiry Workflow",
       "type": "service",
-      "url": "https://ravindra-dev07.vercel.app/contact",
+      "url": "https://ravindra121q.github.io/contact",
       "description": "Direct inquiry dispatch workflow for website development projects, consulting, and full-time employment"
     }
   ]

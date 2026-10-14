@@ -3,8 +3,8 @@ import { Helmet } from 'react-helmet-async';
 import { PROFILE } from '../../data/profileData';
 
 const DEFAULT_SITE_TITLE = `${PROFILE.name} — Senior Frontend Engineer & Website Developer | React.js Architect`;
-const DEFAULT_SITE_URL = 'https://ravindra-dev07.vercel.app';
-const DEFAULT_OG_IMAGE = 'https://ravindra-dev07.vercel.app/profile.jpg';
+const DEFAULT_SITE_URL = 'https://ravindra121q.github.io';
+const DEFAULT_OG_IMAGE = 'https://ravindra121q.github.io/profile.jpg';
 const DEFAULT_DESCRIPTION = `Hire ${PROFILE.name} — Senior Frontend Engineer and Professional Website Developer with 3+ years experience. Specializing in high-performance React.js web applications, responsive websites, custom CMS, e-commerce, and 100% Core Web Vitals.`;
 const DEFAULT_KEYWORDS = 'Website Development, Website Developer, Web Developer, Hire Web Developer, React Developer, Frontend Engineer, React Architect, Web Application Development, React.js, Next.js, Vite, Tailwind CSS, Responsive Web Design, Core Web Vitals, Full Stack UI, UI/UX Engineering, Freelance Web Developer, Ravindra Kumar';
 

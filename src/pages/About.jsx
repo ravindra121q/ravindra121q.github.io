@@ -16,7 +16,7 @@ export default function About() {
       <SEO 
         title={`About Ravindra Kumar | Senior Frontend Engineer & Website Developer`}
         description="Learn about Ravindra Kumar — Frontend React Engineer and Website Developer with 3+ years experience building production-grade web applications, scalable state architectures, and accessible UI systems."
-        canonicalUrl="https://ravindra-dev07.vercel.app/about"
+        canonicalUrl="https://ravindra121q.github.io/about"
         keywords="About Ravindra Kumar, Website Developer Biography, Frontend Engineer Profile, React Developer Experience, UI Architect Background"
         breadcrumbs={breadcrumbs}
       />

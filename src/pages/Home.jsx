@@ -20,7 +20,7 @@ export default function Home() {
       <SEO 
         title={`${PROFILE.name} — Senior Frontend Engineer & Website Developer | React.js Architect`}
         description="Hire Ravindra Kumar — Top-rated Frontend Engineer & Website Developer with 3+ years experience. Building production-grade React web applications, responsive websites, accessible design systems, and 100% Core Web Vitals."
-        canonicalUrl="https://ravindra-dev07.vercel.app/"
+        canonicalUrl="https://ravindra121q.github.io/"
         keywords="Website Development, Website Developer, Hire Web Developer, React Developer, Frontend Engineer, React Architect, Web Application Development, React.js, Next.js, Vite, Tailwind CSS, Responsive Web Design, Core Web Vitals, Full Stack UI, Ravindra Kumar"
       />
       

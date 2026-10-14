@@ -10,7 +10,7 @@ export default function Privacy() {
       <SEO 
         title={`Privacy Policy | ${PROFILE.name}`}
         description="Privacy policy regarding contact form data handling and communication."
-        canonicalUrl="https://ravindra-dev07.vercel.app/privacy"
+        canonicalUrl="https://ravindra121q.github.io/privacy"
       />
 
       <Container size="xl" className="py-16">

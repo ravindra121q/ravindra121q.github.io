@@ -50,7 +50,7 @@ export default function Help() {
       <SEO
         title={`Website Development & Developer FAQs | ${PROFILE.name}`}
         description="Frequently asked questions about hiring Ravindra Kumar for website development, React frontend architecture, performance optimization, and project availability."
-        canonicalUrl="https://ravindra-dev07.vercel.app/help"
+        canonicalUrl="https://ravindra121q.github.io/help"
         keywords="Hire Website Developer, Website Development FAQ, React Developer FAQ, Frontend Engineer Interview, Web Development Services, Core Web Vitals Optimization"
         faq={FAQS}
         breadcrumbs={breadcrumbs}

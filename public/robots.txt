@@ -33,4 +33,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://ravindra-dev07.vercel.app/sitemap.xml
+Sitemap: https://ravindra121q.github.io/sitemap.xml

@@ -14,7 +14,7 @@ export default function Projects() {
       <SEO 
         title={`Website Development Projects & Case Studies | ${PROFILE.name}`}
         description="Production website development projects by Ravindra Kumar: AI EdTech platforms, HIPAA healthcare web applications, e-commerce marketplaces, and custom CMS tools built with React.js."
-        canonicalUrl="https://ravindra-dev07.vercel.app/projects"
+        canonicalUrl="https://ravindra121q.github.io/projects"
         keywords="Website Development Projects, React Web Application Case Studies, Frontend Portfolio Projects, E-Commerce Development, Custom Web Apps, React Developer Portfolio, Ravindra Kumar"
         breadcrumbs={breadcrumbs}
       />

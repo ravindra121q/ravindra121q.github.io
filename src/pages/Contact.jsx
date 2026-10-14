@@ -14,7 +14,7 @@ export default function Contact() {
       <SEO
         title={`Hire & Contact ${PROFILE.name} | Website Developer & Frontend Engineer`}
         description="Hire Ravindra Kumar for full-time frontend roles, website development contracts, and React.js engineering consulting. Fast response within 24 hours."
-        canonicalUrl="https://ravindra-dev07.vercel.app/contact"
+        canonicalUrl="https://ravindra121q.github.io/contact"
         keywords="Hire Ravindra Kumar, Hire Website Developer, Contact Frontend Engineer, Hire React Developer, Web Development Inquiry, Freelance Website Developer"
         breadcrumbs={breadcrumbs}
       />

@@ -14,7 +14,7 @@ export default function Services() {
       <SEO 
         title={`Website Development & Modern Frontend Engineering Services | ${PROFILE.name}`}
         description="Hire Ravindra Kumar for professional website development and React frontend engineering. Custom web applications, performance audits, responsive UI design systems, and API integrations."
-        canonicalUrl="https://ravindra-dev07.vercel.app/services"
+        canonicalUrl="https://ravindra121q.github.io/services"
         keywords="Website Development Services, React Developer Services, Custom Web Application Development, Frontend Architecture, Hire Website Developer, React UI Engineering, Web Performance Optimization, Responsive Web Design"
         breadcrumbs={breadcrumbs}
       />
