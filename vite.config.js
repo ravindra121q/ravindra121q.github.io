@@ -23,6 +23,7 @@ const SPA_ROUTES = [
 function githubPagesSpaPlugin() {
   return {
     name: 'github-pages-spa',
+    apply: 'build',
     closeBundle() {
       const distDir = path.resolve(__dirname, 'dist');
       const indexPath = path.join(distDir, 'index.html');
@@ -52,64 +53,79 @@ function githubPagesSpaPlugin() {
   };
 }
 
-export default defineConfig({
-  base: '/',
-  plugins: [
+export default defineConfig(({ mode }) => {
+  const isTest = Boolean(process.env.VITEST || mode === 'test');
+
+  const plugins = [
     react(),
-    tailwindcss(),
-    Sitemap({
-      hostname: 'https://ravindra121q.github.io',
-      dynamicRoutes: SPA_ROUTES.map(route => `/${route}`),
-      changefreq: 'weekly',
-      priority: 0.8,
-      generateRobotsTxt: false
-    }),
-    VitePWA({
-      registerType: 'autoUpdate',
-      injectRegister: 'inline',
-      includeAssets: ['favicon.svg', 'robots.txt', 'profile.jpg'],
-      workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
-        maximumFileSizeToCacheInBytes: 5000000,
-        navigateFallbackDenylist: [/^\/sitemap\.xml$/, /^\/robots\.txt$/, /^\/ai-catalog\.json$/, /^\/llms\.txt$/]
-      },
-      manifest: {
-        name: 'Ravindra Kumar — Senior Frontend Engineer Portfolio',
-        short_name: 'Ravindra',
-        description: 'Senior Frontend Engineer & React Architect Portfolio',
-        theme_color: '#09090b',
-        background_color: '#09090b',
-        icons: [
-          {
-            src: 'favicon.svg',
-            sizes: '192x192 512x512',
-            type: 'image/svg+xml',
-            purpose: 'any maskable'
-          }
-        ]
-      }
-    }),
-    githubPagesSpaPlugin()
-  ],
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
-              return 'vendor-react';
+    tailwindcss()
+  ];
+
+  if (!isTest) {
+    plugins.push(
+      Sitemap({
+        hostname: 'https://ravindra121q.github.io',
+        dynamicRoutes: SPA_ROUTES.map(route => `/${route}`),
+        changefreq: 'weekly',
+        priority: 0.8,
+        generateRobotsTxt: false
+      }),
+      VitePWA({
+        registerType: 'autoUpdate',
+        injectRegister: 'inline',
+        includeAssets: ['favicon.svg', 'robots.txt', 'profile.jpg'],
+        workbox: {
+          globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+          maximumFileSizeToCacheInBytes: 5000000,
+          navigateFallbackDenylist: [/^\/sitemap\.xml$/, /^\/robots\.txt$/, /^\/ai-catalog\.json$/, /^\/llms\.txt$/]
+        },
+        manifest: {
+          name: 'Ravindra Kumar — Senior Frontend Engineer Portfolio',
+          short_name: 'Ravindra',
+          description: 'Senior Frontend Engineer & React Architect Portfolio',
+          theme_color: '#09090b',
+          background_color: '#09090b',
+          icons: [
+            {
+              src: 'favicon.svg',
+              sizes: '192x192 512x512',
+              type: 'image/svg+xml',
+              purpose: 'any maskable'
             }
-            if (id.includes('lucide-react')) {
-              return 'vendor-icons';
+          ]
+        }
+      }),
+      githubPagesSpaPlugin()
+    );
+  }
+
+  return {
+    base: '/',
+    plugins,
+    test: {
+      globals: true,
+      environment: 'node'
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+                return 'vendor-react';
+              }
+              if (id.includes('lucide-react')) {
+                return 'vendor-icons';
+              }
+              if (id.includes('framer-motion')) {
+                return 'vendor-animation';
+              }
+              return 'vendor';
             }
-            if (id.includes('framer-motion')) {
-              return 'vendor-animation';
-            }
-            return 'vendor';
           }
         }
-      }
-    },
-    chunkSizeWarningLimit: 1200
-  }
+      },
+      chunkSizeWarningLimit: 1200
+    }
+  };
 });
