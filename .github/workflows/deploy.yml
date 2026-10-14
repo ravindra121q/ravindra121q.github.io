@@ -1,8 +1,5 @@
 name: Deploy to GitHub Pages
 
-# Official GitHub Pages Deployment Workflow
-# Documentation: https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
-
 on:
   push:
     branches:
@@ -10,14 +7,11 @@ on:
       - main
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: pages
   cancel-in-progress: false
@@ -36,9 +30,6 @@ jobs:
         with:
           node-version: 22
           cache: npm
-
-      - name: Setup GitHub Pages metadata
-        uses: actions/configure-pages@v5
 
       - name: Install dependencies
         run: npm ci
@@ -98,6 +89,16 @@ jobs:
         with:
           path: ./dist
 
+      - name: Sync built bundle to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        continue-on-error: true
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          keep_files: false
+          enable_jekyll: false
+          commit_message: "chore(release): deploy ${{ github.sha }} to gh-pages [skip ci]"
+
   deploy:
     name: Deploy to GitHub Pages
     environment:
@@ -108,4 +109,5 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
+        continue-on-error: true
         uses: actions/deploy-pages@v4
